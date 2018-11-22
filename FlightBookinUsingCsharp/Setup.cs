@@ -14,15 +14,17 @@ namespace TicketBooking
         {
 
             TicketBooking tic = new TicketBooking();
+
+
+           
             
-            //OpenBrowser
-            tic.openbrowser();
+            tic.OpenBrowser();
+
+            tic.Login();
+
+            tic.EnterDetails();
             
-            //EneterUserDetails
-            tic.enterdetails();
-            
-            
-            //Close the Browser
+         
             tic.TearDown();
 
 

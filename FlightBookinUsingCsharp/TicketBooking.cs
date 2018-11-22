@@ -16,21 +16,47 @@ namespace TicketBooking
     class TicketBooking
     {
         IWebDriver driver = new ChromeDriver();
+
+
+
+
         [SetUp]
-        public void openbrowser()
+        public void OpenBrowser()
         {
             driver.Navigate().GoToUrl("https://in.via.com/");
             driver.Manage().Window.Maximize();
 
         }
 
-
         [Test]
-        public void enterdetails()
-        {
+        public void Login()
 
+        {
             //clickOnPopup   
             driver.FindElement(By.XPath("//button[@class='No thanks']")).Click();
+
+            //WaitFor5Seconds
+            Thread.Sleep(5000);
+
+            //ClickOnSignIn
+            driver.FindElement(By.XPath("(//div[@class='elementPad menuLabel  secNavIcon'])[3]")).Click();
+
+            //EnterTheUserName
+            driver.FindElement(By.Id("loginIdText")).SendKeys("amold@gmail.com");
+            //EnterThePassword
+            driver.FindElement(By.Id("passwordText")).SendKeys("9922974130");
+
+
+            //EnterThePassword
+            driver.FindElement(By.XPath("//input[@value='Sign In']")).Click();
+        }
+
+
+        [Test]
+        public void EnterDetails()
+        {
+
+          
 
             //WaitFor10Seconds
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
@@ -131,11 +157,11 @@ namespace TicketBooking
         [TearDown]
         public void TearDown()
         {  
-            //CloseTheBrowser
-            driver.Quit();
+         //CloseTheBrowser
+         driver.Quit();
 
         }
-    }
+        }
 
 
 
